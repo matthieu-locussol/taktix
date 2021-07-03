@@ -1,0 +1,10 @@
+{
+   "recommendations": [
+      "ethansk.restore-terminals",
+      "prisma.prisma",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "mtxr.sqltools",
+      "mtxr.sqltools-driver-pg"
+   ]
+}
