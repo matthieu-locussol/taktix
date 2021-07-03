@@ -1,3 +1,4 @@
+import { Button } from '@/components/Button';
 import type { User } from '@prisma/client';
 import { signIn, useSession, signOut } from 'next-auth/client';
 import React from 'react';
@@ -14,17 +15,12 @@ const Index = (): JSX.Element => {
       session?.user ? (
          <>
             <p>Welcome {session.user.name}</p>
-            <button type="button" onClick={() => signOut()}>
+            <Button variant="secondary" onClick={() => signOut()}>
                logout
-            </button>
+            </Button>
          </>
       ) : (
-         <button
-            className="bg-blue-500 rounded p-2 text-white uppercase hover:bg-blue-600 focus:bg-blue-700 transition-all"
-            type="button"
-            onClick={() => signIn()}>
-            login
-         </button>
+         <Button onClick={() => signIn()}>login</Button>
       );
 
    return (
