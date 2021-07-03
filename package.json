@@ -13,7 +13,9 @@
       "export": "yarn run next export",
       "check:prettier": "prettier --list-different --config ./.prettierrc.json --ignore-path .gitignore --write \"**/*.{js,jsx,ts,tsx}\"",
       "check:eslint": "eslint --ignore-path .gitignore .",
-      "check:typescript": "tsc --project ./tsconfig.json --noEmit"
+      "check:typescript": "tsc --project ./tsconfig.json --noEmit",
+      "storybook": "start-storybook -p 6006",
+      "build-storybook": "build-storybook"
    },
    "pre-commit": [
       "check:typescript",
@@ -23,6 +25,7 @@
    "dependencies": {
       "@next-auth/prisma-adapter": "^0.5.2",
       "@prisma/client": "2.26.0",
+      "@storybook/react": "^6.3.2",
       "axios": "^0.21.1",
       "next": "^11.0.1",
       "next-auth": "^3.27.1",
@@ -32,12 +35,18 @@
       "tailwindcss": "^2.2.4"
    },
    "devDependencies": {
+      "@babel/core": "^7.14.6",
+      "@storybook/addon-actions": "^6.3.2",
+      "@storybook/addon-essentials": "^6.3.2",
+      "@storybook/addon-links": "^6.3.2",
+      "@storybook/addon-postcss": "^2.0.0",
       "@types/node": "^15.14.0",
       "@types/react": "^17.0.13",
       "@types/react-dom": "^17.0.1",
       "@typescript-eslint/eslint-plugin": "^4.28.1",
       "@typescript-eslint/parser": "^4.28.1",
       "autoprefixer": "^10.2.6",
+      "babel-loader": "^8.2.2",
       "eslint": "^7.30.0",
       "eslint-config-airbnb-typescript": "^12.3.1",
       "eslint-config-prettier": "^8.3.0",
