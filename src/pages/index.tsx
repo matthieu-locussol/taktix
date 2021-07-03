@@ -3,7 +3,7 @@ import type { User } from '@prisma/client';
 import React, { useState } from 'react';
 import useSWR from 'swr';
 
-const Index = () => {
+const Index = (): JSX.Element => {
    const { data, error } = useSWR<User[]>('/api/users/list');
    const [email, setEmail] = useState('');
    const [createError, setCreateError] = useState(false);
