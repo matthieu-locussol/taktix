@@ -1,7 +1,7 @@
 {
-   "name": "starter-next-typescript",
-   "version": "1.0.1",
-   "description": "A starter for web development using Typescript and Next.js based on my preferences.",
+   "name": "taktix",
+   "version": "1.0.0",
+   "description": "A small browser game written in TypeScript.",
    "repository": "https://github.com/matthieu-locussol/starter-next-typescript",
    "author": "Matthieu LOCUSSOL",
    "license": "MIT",
