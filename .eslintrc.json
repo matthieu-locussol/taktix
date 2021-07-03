@@ -12,7 +12,6 @@
          "error",
          { "vars": "all", "args": "after-used", "argsIgnorePattern": "^_" }
       ],
-      "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/naming-convention": [
          "error",
          {
