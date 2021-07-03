@@ -1,0 +1,31 @@
+{
+   "artificialDelayMilliseconds": 300,
+   "keepExistingTerminalsOpen": false,
+   "runOnStartup": true,
+   "terminals": [
+      {
+         "splitTerminals": [
+            {
+               "name": "Terminal",
+               "commands": []
+            }
+         ]
+      },
+      {
+         "splitTerminals": [
+            {
+               "name": "Next.js",
+               "commands": ["yarn dev"]
+            },
+            {
+               "name": "Prisma Studio",
+               "commands": ["npx prisma studio"]
+            },
+            {
+               "name": "Storybook",
+               "commands": ["yarn storybook"]
+            }
+         ]
+      }
+   ]
+}
