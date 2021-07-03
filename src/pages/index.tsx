@@ -2,6 +2,7 @@ import { api } from '@/utils/api/api';
 import type { User } from '@prisma/client';
 import React, { useState } from 'react';
 import useSWR from 'swr';
+import { signIn } from 'next-auth/client';
 
 const Index = (): JSX.Element => {
    const { data, error } = useSWR<User[]>('/api/users/list');
@@ -35,6 +36,9 @@ const Index = (): JSX.Element => {
          </button>
          {createError && <p>An error occurred while creating your account!</p>}
          {createSuccess && <p>Successfully created your account!</p>}
+         <button type="button" onClick={() => signIn()}>
+            login
+         </button>
       </div>
    );
 };
