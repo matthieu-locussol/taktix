@@ -19,14 +19,17 @@ const Index = (): JSX.Element => {
             </button>
          </>
       ) : (
-         <button type="button" onClick={() => signIn()}>
+         <button
+            className="bg-blue-500 rounded p-2 text-white uppercase hover:bg-blue-600 focus:bg-blue-700 transition-all"
+            type="button"
+            onClick={() => signIn()}>
             login
          </button>
       );
 
    return (
       <div>
-         <h1>Hello world!</h1>
+         <h1 className="text-3xl font-bold text-blue-500">Hello world!</h1>
          <p>You are using Matthieu LOCUSSOL&apos;s starter using Typescript and Next.js!</p>
          <p>{JSON.stringify(data)}</p>
          {loading ? <p>Loading...</p> : <LoginButton />}
