@@ -63,7 +63,7 @@ jobs:
               port: ${{ secrets.PORT }}
               script: |
                  /usr/bin/git -C ~/taktix pull
-                 /root/.nvm/versions/node/v15.12.0/bin/npx prisma migrate deploy --cwd ~/taktix
+                 cd ~/taktix && /root/.nvm/versions/node/v15.12.0/bin/npx prisma migrate deploy
          - name: Copy build using SCP
            uses: appleboy/scp-action@master
            env:
