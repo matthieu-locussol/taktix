@@ -9,6 +9,8 @@ jobs:
       name: Check prettier
       runs-on: ubuntu-latest
       steps:
+         - name: Checkout source code
+           uses: actions/checkout@v2
          - name: Checking files formatting
            run: npm check:prettier
 
@@ -16,6 +18,8 @@ jobs:
       name: Check typescript
       runs-on: ubuntu-latest
       steps:
+         - name: Checkout source code
+           uses: actions/checkout@v2
          - name: Running typescript validation
            run: npm check:typescript
 
@@ -23,6 +27,8 @@ jobs:
       name: Check eslint
       runs-on: ubuntu-latest
       steps:
+         - name: Checkout source code
+           uses: actions/checkout@v2
          - name: Running linter
            run: npm check:eslint
 
