@@ -26,8 +26,6 @@ const Index = (): JSX.Element => {
    return (
       <div>
          <h1 className="text-3xl font-bold text-blue-500">Hello world!</h1>
-         <p>You are using Matthieu LOCUSSOL&apos;s starter using Typescript and Next.js!</p>
-         <p>{JSON.stringify(data)}</p>
          {loading ? <p>Loading...</p> : <LoginButton />}
       </div>
    );
