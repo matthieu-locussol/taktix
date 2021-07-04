@@ -1,0 +1,33 @@
+name: Deploy
+on:
+   push:
+      branches:
+         - master
+
+jobs:
+   production:
+      name: Production
+      runs-on: ubuntu-latest
+      steps:
+         - name: Checkout source code
+           uses: actions/checkout@v2
+         - name: Load cache
+           uses: actions/cache@v2
+           with:
+              path: '**/node_modules'
+              key: ${{ runner.os }}-modules
+         - name: Install dependencies
+           run: npm install
+         - name: Build
+           run: npm run build
+         - name: Copy build using SCP
+           uses: appleboy/scp-action@master
+           env:
+              HOST: ${{ secrets.HOST }}
+              USERNAME: ${{ secrets.USERNAME }}
+              PORT: ${{ secrets.PORT }}
+              KEY: ${{ secrets.SSHKEY }}
+           with:
+              source: '.next/.'
+              target: '~/taktix/'
+              overwrite: true
