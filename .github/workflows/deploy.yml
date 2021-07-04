@@ -12,7 +12,7 @@ jobs:
          - name: Checkout source code
            uses: actions/checkout@v2
          - name: Checking files formatting
-           run: npm check:prettier
+           run: npm run check:prettier
 
    typescript:
       name: Check typescript
@@ -21,7 +21,7 @@ jobs:
          - name: Checkout source code
            uses: actions/checkout@v2
          - name: Running typescript validation
-           run: npm check:typescript
+           run: npm run check:typescript
 
    eslint:
       name: Check eslint
@@ -30,7 +30,7 @@ jobs:
          - name: Checkout source code
            uses: actions/checkout@v2
          - name: Running linter
-           run: npm check:eslint
+           run: npm run check:eslint
 
    production:
       name: Production
