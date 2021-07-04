@@ -5,9 +5,31 @@ on:
          - master
 
 jobs:
+   prettier:
+      name: Check prettier
+      runs-on: ubuntu-latest
+      steps:
+         - name: Checking files formatting
+           run: npm check:prettier
+
+   typescript:
+      name: Check typescript
+      runs-on: ubuntu-latest
+      steps:
+         - name: Running typescript validation
+           run: npm check:typescript
+
+   eslint:
+      name: Check eslint
+      runs-on: ubuntu-latest
+      steps:
+         - name: Running linter
+           run: npm check:eslint
+
    production:
       name: Production
       runs-on: ubuntu-latest
+      needs: [prettier, typescript, eslint]
       steps:
          - name: Checkout source code
            uses: actions/checkout@v2
