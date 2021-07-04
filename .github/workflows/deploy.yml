@@ -11,6 +11,8 @@ jobs:
       steps:
          - name: Checkout source code
            uses: actions/checkout@v2
+         - name: Install dependencies
+           run: npm install
          - name: Checking files formatting
            run: npm run check:prettier
 
@@ -20,6 +22,8 @@ jobs:
       steps:
          - name: Checkout source code
            uses: actions/checkout@v2
+         - name: Install dependencies
+           run: npm install
          - name: Running typescript validation
            run: npm run check:typescript
 
@@ -29,6 +33,8 @@ jobs:
       steps:
          - name: Checkout source code
            uses: actions/checkout@v2
+         - name: Install dependencies
+           run: npm install
          - name: Running linter
            run: npm run check:eslint
 
