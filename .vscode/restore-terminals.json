@@ -16,14 +16,30 @@
             {
                "name": "Next.js",
                "commands": ["yarn dev"]
-            },
+            }
+         ]
+      },
+      {
+         "splitTerminals": [
             {
                "name": "Prisma Studio",
                "commands": ["npx prisma studio"]
-            },
+            }
+         ]
+      },
+      {
+         "splitTerminals": [
             {
                "name": "Storybook",
                "commands": ["yarn storybook"]
+            }
+         ]
+      },
+      {
+         "splitTerminals": [
+            {
+               "name": "Jest",
+               "commands": ["yarn tests:watch"]
             }
          ]
       }
