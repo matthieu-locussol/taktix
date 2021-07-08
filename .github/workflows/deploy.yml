@@ -48,7 +48,7 @@ jobs:
          - name: Install dependencies
            run: npm install
          - name: Running unit tests
-           run: npm run tests
+           run: npm run tests --ci
 
    production:
       name: Production
@@ -64,6 +64,8 @@ jobs:
               key: ${{ runner.os }}-modules
          - name: Install dependencies
            run: npm install
+         - name: Generate prisma schema
+           run: npx prisma generate
          - name: Build
            run: npm run build
          - name: Pulling changes & migrating database
