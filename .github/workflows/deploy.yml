@@ -11,6 +11,11 @@ jobs:
       steps:
          - name: Checkout source code
            uses: actions/checkout@v2
+         - name: Load cache
+           uses: actions/cache@v2
+           with:
+              path: '**/node_modules'
+              key: ${{ runner.os }}-modules
          - name: Install dependencies
            run: npm install
          - name: Checking files formatting
@@ -22,6 +27,11 @@ jobs:
       steps:
          - name: Checkout source code
            uses: actions/checkout@v2
+         - name: Load cache
+           uses: actions/cache@v2
+           with:
+              path: '**/node_modules'
+              key: ${{ runner.os }}-modules
          - name: Install dependencies
            run: npm install
          - name: Running typescript validation
@@ -33,6 +43,11 @@ jobs:
       steps:
          - name: Checkout source code
            uses: actions/checkout@v2
+         - name: Load cache
+           uses: actions/cache@v2
+           with:
+              path: '**/node_modules'
+              key: ${{ runner.os }}-modules
          - name: Install dependencies
            run: npm install
          - name: Running linter
