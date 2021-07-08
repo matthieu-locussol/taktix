@@ -1,8 +1,8 @@
-import { Button } from '@/components/Button';
 import type { User } from '@prisma/client';
-import { signIn, useSession, signOut } from 'next-auth/client';
+import { signIn, signOut, useSession } from 'next-auth/client';
 import React from 'react';
 import useSWR from 'swr';
+import { Button } from '../components/Button';
 
 const Index = (): JSX.Element => {
    const [session, loading] = useSession();
