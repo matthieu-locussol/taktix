@@ -34,6 +34,8 @@ jobs:
               key: ${{ runner.os }}-modules
          - name: Install dependencies
            run: npm install
+         - name: Generate prisma schema
+           run: npx prisma generate
          - name: Running typescript validation
            run: npm run check:typescript
 
