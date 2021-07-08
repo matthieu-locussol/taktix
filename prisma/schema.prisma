@@ -44,6 +44,9 @@ model User {
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
+
+  character   Character? @relation(fields: [characterId], references: [id])
+  characterId String?
 }
 
 model VerificationRequest {
@@ -55,4 +58,28 @@ model VerificationRequest {
   updatedAt  DateTime @updatedAt
 
   @@unique([identifier, token])
+}
+
+model Character {
+  id   String @id @default(cuid())
+  name String @unique
+
+  strength  Int
+  dexterity Int
+  magic     Int
+  stamina   Int
+  luck      Int
+  armour    Int
+
+  level      Int
+  experience Int
+
+  class CharacterClass
+  User  User?
+}
+
+enum CharacterClass {
+  RANGER
+  WARRIOR
+  WIZARD
 }
