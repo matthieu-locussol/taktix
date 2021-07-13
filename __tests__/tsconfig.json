@@ -4,6 +4,7 @@
    "exclude": [],
    "compilerOptions": {
       "types": ["cypress"],
-      "noEmit": true
+      "noEmit": true,
+      "isolatedModules": false
    }
 }
