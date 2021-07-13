@@ -20,7 +20,9 @@ const Index = (): JSX.Element => {
             </Button>
          </>
       ) : (
-         <Button onClick={() => signIn()}>login</Button>
+         <Button data-cy="login" onClick={() => signIn()}>
+            login
+         </Button>
       );
 
    return (

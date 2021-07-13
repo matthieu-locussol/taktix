@@ -42,6 +42,14 @@
                "commands": ["yarn tests:watch"]
             }
          ]
+      },
+      {
+         "splitTerminals": [
+            {
+               "name": "Cypress",
+               "commands": ["yarn tests:e2e"]
+            }
+         ]
       }
    ]
 }

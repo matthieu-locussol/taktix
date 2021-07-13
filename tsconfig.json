@@ -12,10 +12,10 @@
       "target": "es2019",
       "allowJs": false,
       "noEmit": false,
-      "moduleResolution": "node",
-      "isolatedModules": true
+      "moduleResolution": "node"
    },
    "include": [
+      "__tests__/unit/**/*",
       "src/**/*",
       "next.config.js",
       "next-env.d.ts",

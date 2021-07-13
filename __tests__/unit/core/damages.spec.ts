@@ -1,5 +1,5 @@
 import { CharacterClass } from '@prisma/client';
-import { computeDamages } from '../damages';
+import { computeDamages } from '../../../src/core/damages';
 import { CharacterInMemory } from './gateways/CharacterInMemory';
 
 describe('computeDamages', () => {

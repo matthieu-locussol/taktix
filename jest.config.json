@@ -1,5 +1,6 @@
 {
    "preset": "ts-jest",
    "testEnvironment": "node",
-   "testMatch": ["**/__tests__/**/*.spec.ts"]
+   "testMatch": ["<rootDir>/__tests__/unit/**/*.spec.ts"],
+   "modulePathIgnorePatterns": ["<rootDir>/__tests__/integration"]
 }

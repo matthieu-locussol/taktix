@@ -1,10 +1,16 @@
 {
    "root": true,
    "parser": "@typescript-eslint/parser",
-   "plugins": ["@typescript-eslint", "react", "react-hooks"],
-   "extends": ["airbnb-typescript", "eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+   "plugins": ["@typescript-eslint", "react", "react-hooks", "cypress"],
+   "extends": [
+      "airbnb-typescript",
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+      "plugin:cypress/recommended"
+   ],
    "parserOptions": {
-      "project": "./tsconfig.json"
+      "project": ["./tsconfig.json", "./__tests__/tsconfig.json"]
    },
    "rules": {
       "quotes": ["error", "single", "avoid-escape"],

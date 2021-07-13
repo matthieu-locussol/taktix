@@ -1,4 +1,4 @@
-import { clamp } from '../clamp';
+import { clamp } from '../../../src/utils/clamp';
 
 describe('clamp', () => {
    test('value inside the range', () => {

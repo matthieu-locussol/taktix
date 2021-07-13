@@ -5,7 +5,7 @@ import {
    computeDodge,
    computeHealth,
    computeSpirit,
-} from '../attributes';
+} from '../../../src/core/attributes';
 import { CharacterInMemory } from './gateways/CharacterInMemory';
 
 describe('computeDodge', () => {
