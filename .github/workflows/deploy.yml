@@ -87,6 +87,8 @@ jobs:
            uses: actions/checkout@v2
          - name: Migrating database
            run: npx prisma migrate deploy
+           env:
+              DATABASE_URL: '${{secrets.DATABASE_URL}}'
          - name: Running integration tests
            uses: cypress-io/github-action@v2
            env:
