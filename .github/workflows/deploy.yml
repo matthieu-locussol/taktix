@@ -85,6 +85,8 @@ jobs:
       steps:
          - name: Checkout source code
            uses: actions/checkout@v2
+         - name: Migrating database
+           run: npx prisma migrate deploy
          - name: Running integration tests
            uses: cypress-io/github-action@v2
            env:
