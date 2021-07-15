@@ -87,6 +87,9 @@ jobs:
            uses: actions/checkout@v2
          - name: Running integration tests
            uses: cypress-io/github-action@v2
+           env:
+              DATABASE_URL: '${{secrets.DATABASE_URL}}'
+              NEXTAUTH_URL: '${{secrets.NEXTAUTH_URL}}'
            with:
               build: npm run build
               start: npm start
