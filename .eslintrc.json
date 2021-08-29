@@ -13,7 +13,11 @@
       "project": ["./tsconfig.json", "./__tests__/tsconfig.json"]
    },
    "rules": {
+      "arrow-body-style": "off",
       "quotes": ["error", "single", "avoid-escape"],
+      "import/prefer-default-export": "off",
+      "react/jsx-props-no-spreading": "off",
+      "react/react-in-jsx-scope": "off",
       "@typescript-eslint/no-unused-vars": [
          "error",
          { "vars": "all", "args": "after-used", "argsIgnorePattern": "^_" }
@@ -25,9 +29,6 @@
             "format": ["camelCase"],
             "leadingUnderscore": "allow"
          }
-      ],
-      "import/prefer-default-export": "off",
-      "react/jsx-props-no-spreading": "off",
-      "arrow-body-style": "off"
+      ]
    }
 }

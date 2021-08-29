@@ -13,7 +13,9 @@
       "allowJs": false,
       "noEmit": false,
       "moduleResolution": "node",
-      "isolatedModules": true
+      "isolatedModules": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true
    },
    "include": [
       "__tests__/unit/**/*",

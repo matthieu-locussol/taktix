@@ -8,7 +8,9 @@ export default {
    argTypes: {},
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args}>Button</Button>;
+const Template: Story<ButtonProps> = (args) => {
+   return <Button {...args}>Button</Button>;
+};
 
 export const Primary = Template.bind({});
 Primary.args = {

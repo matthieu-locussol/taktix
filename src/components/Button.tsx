@@ -16,6 +16,6 @@ export type ButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonEleme
    variant?: keyof typeof colorClassnames;
 };
 
-export const Button = ({ size = 'small', variant: color = 'primary', ...props }: ButtonProps): JSX.Element => (
-   <button type="button" className={`${sizeClassnames[size]} ${colorClassnames[color]}`} {...props} />
-);
+export const Button = ({ size = 'small', variant: color = 'primary', ...props }: ButtonProps): JSX.Element => {
+   return <button type="button" className={`${sizeClassnames[size]} ${colorClassnames[color]}`} {...props} />;
+};
