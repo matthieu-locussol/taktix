@@ -34,14 +34,6 @@
                "commands": ["yarn storybook"]
             }
          ]
-      },
-      {
-         "splitTerminals": [
-            {
-               "name": "Jest",
-               "commands": ["yarn tests:watch"]
-            }
-         ]
       }
    ]
 }
