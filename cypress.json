@@ -6,6 +6,5 @@
    "viewportHeight": 1000,
    "viewportWidth": 1280,
    "integrationFolder": "__tests__/integration",
-   "video": false,
-   "defaultCommandTimeout": 8000
+   "video": false
 }

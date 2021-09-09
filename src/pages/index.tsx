@@ -3,10 +3,11 @@ import { signIn, signOut, useSession } from 'next-auth/client';
 import React from 'react';
 import useSWR from 'swr';
 import { Button } from '../components/Button';
+import { fetcher } from '../utils/api/api';
 
 const Index = (): JSX.Element => {
    const [session, loading] = useSession();
-   const { data, error } = useSWR<User[]>('/api/users/list');
+   const { data, error } = useSWR<User[]>('/users/list', fetcher);
 
    if (!data) return <p>Loading...</p>;
    if (error) return <p>Error: {error}!</p>;
