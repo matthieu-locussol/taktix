@@ -102,7 +102,71 @@ jobs:
          - run: yarn install
          - run: yarn prisma generate
          - run: yarn build
-         - name: Pulling changes & migrating database
+         - uses: shimataro/ssh-key-action@v2
+           with:
+              key: ${{ secrets.SSHKEY }}
+              known_hosts: 'taktix-ci-cd'
+         - name: Rsync .next/ directory
+           uses: burnett01/rsync-deployments@5.1
+           with:
+              switches: -avzr --delete
+              path: .next/
+              remote_path: /root/taktix/.next/
+              remote_host: ${{ secrets.HOST }}
+              remote_port: ${{ secrets.PORT }}
+              remote_user: ${{ secrets.USERNAME }}
+              remote_key: ${{ secrets.SSHKEY }}
+         - name: Rsync node_modules/ directory
+           uses: burnett01/rsync-deployments@5.1
+           with:
+              switches: -avzr --delete
+              path: node_modules/
+              remote_path: /root/taktix/node_modules/
+              remote_host: ${{ secrets.HOST }}
+              remote_port: ${{ secrets.PORT }}
+              remote_user: ${{ secrets.USERNAME }}
+              remote_key: ${{ secrets.SSHKEY }}
+         - name: Rsync prisma/ directory
+           uses: burnett01/rsync-deployments@5.1
+           with:
+              switches: -avzr --delete
+              path: prisma/
+              remote_path: /root/taktix/prisma/
+              remote_host: ${{ secrets.HOST }}
+              remote_port: ${{ secrets.PORT }}
+              remote_user: ${{ secrets.USERNAME }}
+              remote_key: ${{ secrets.SSHKEY }}
+         - name: Rsync next.config.js file
+           uses: burnett01/rsync-deployments@5.1
+           with:
+              switches: -avzr --delete
+              path: next.config.js
+              remote_path: /root/taktix/next.config.js
+              remote_host: ${{ secrets.HOST }}
+              remote_port: ${{ secrets.PORT }}
+              remote_user: ${{ secrets.USERNAME }}
+              remote_key: ${{ secrets.SSHKEY }}
+         - name: Rsync package.json file
+           uses: burnett01/rsync-deployments@5.1
+           with:
+              switches: -avzr --delete
+              path: package.json
+              remote_path: /root/taktix/package.json
+              remote_host: ${{ secrets.HOST }}
+              remote_port: ${{ secrets.PORT }}
+              remote_user: ${{ secrets.USERNAME }}
+              remote_key: ${{ secrets.SSHKEY }}
+         - name: Rsync pm2.config.js file
+           uses: burnett01/rsync-deployments@5.1
+           with:
+              switches: -avzr --delete
+              path: pm2.config.js
+              remote_path: /root/taktix/pm2.config.js
+              remote_host: ${{ secrets.HOST }}
+              remote_port: ${{ secrets.PORT }}
+              remote_user: ${{ secrets.USERNAME }}
+              remote_key: ${{ secrets.SSHKEY }}
+         - name: Migrating database
            uses: appleboy/ssh-action@master
            with:
               host: ${{ secrets.HOST }}
@@ -110,20 +174,6 @@ jobs:
               key: ${{ secrets.SSHKEY }}
               port: ${{ secrets.PORT }}
               script: cd ~/taktix && /root/.yarn/bin/yarn prisma migrate deploy
-         - uses: shimataro/ssh-key-action@v2
-           with:
-              key: ${{ secrets.SSHKEY }}
-              known_hosts: 'taktix-ci-cd'
-         - name: rsync deployments
-           uses: burnett01/rsync-deployments@5.1
-           with:
-              switches: -avzr --delete
-              path: .next/
-              remote_path: /root/taktix/
-              remote_host: ${{ secrets.HOST }}
-              remote_port: ${{ secrets.PORT }}
-              remote_user: ${{ secrets.USERNAME }}
-              remote_key: ${{ secrets.SSHKEY }}
          - name: Reloading PM2 process
            uses: appleboy/ssh-action@master
            with:
