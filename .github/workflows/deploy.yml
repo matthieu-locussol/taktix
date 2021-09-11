@@ -112,7 +112,7 @@ jobs:
               script: cd ~/taktix && /root/.nvm/versions/node/v15.12.0/bin/npx prisma migrate deploy
          - uses: shimataro/ssh-key-action@v2
            with:
-              key: ${{ secrets.SSHKEY }}
+              key: ${{ secrets.SSH_PRIVATE_KEY }}
               known_hosts: 'taktix-ci-cd'
          - run: rsync -avz .next/. ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/root/taktix/
          - name: Reloading PM2 process
