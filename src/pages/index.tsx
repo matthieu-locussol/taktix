@@ -16,7 +16,7 @@ const Index = (): JSX.Element => {
       session?.user ? (
          <>
             <p>Welcome {session.user.name}</p>
-            <Button variant="primary" onClick={() => signOut()}>
+            <Button variant="secondary" onClick={() => signOut()}>
                logout
             </Button>
          </>
