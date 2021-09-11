@@ -102,10 +102,10 @@ jobs:
          - run: yarn install
          - run: yarn prisma generate
          - run: yarn build
-         - uses: shimataro/ssh-key-action@v2
-           with:
-              key: ${{ secrets.SSHKEY }}
-              known_hosts: 'taktix-ci-cd'
+         # - uses: shimataro/ssh-key-action@v2
+         #   with:
+         #      key: ${{ secrets.SSHKEY }}
+         #      known_hosts: 'taktix-ci-cd'
          - name: Rsync .next/ directory
            uses: burnett01/rsync-deployments@5.1
            with:
@@ -169,16 +169,16 @@ jobs:
          - name: Migrating database
            uses: appleboy/ssh-action@master
            with:
-              host: ${{ secrets.HOST }}
-              username: ${{ secrets.USERNAME }}
               key: ${{ secrets.SSHKEY }}
+              host: ${{ secrets.HOST }}
               port: ${{ secrets.PORT }}
+              username: ${{ secrets.USERNAME }}
               script: cd ~/taktix && /root/.yarn/bin/yarn prisma migrate deploy
          - name: Reloading PM2 process
            uses: appleboy/ssh-action@master
            with:
-              host: ${{ secrets.HOST }}
-              username: ${{ secrets.USERNAME }}
               key: ${{ secrets.SSHKEY }}
+              host: ${{ secrets.HOST }}
               port: ${{ secrets.PORT }}
+              username: ${{ secrets.USERNAME }}
               script: /usr/local/bin/pm2 reload "Taktix"
