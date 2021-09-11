@@ -114,7 +114,16 @@ jobs:
            with:
               key: ${{ secrets.SSHKEY }}
               known_hosts: 'taktix-ci-cd'
-         - run: rsync -avz .next/. ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/root/taktix/
+         - name: rsync deployments
+            uses: burnett01/rsync-deployments@5.1
+            with:
+               switches: -avzr --delete
+               path: .next/
+               remote_path: /root/taktix/
+               remote_host: ${{ secrets.HOST }}
+               remote_port: ${{ secrets.PORT }}
+               remote_user: ${{ secrets.USERNAME }}
+               remote_key: ${{ secrets.SSHKEY }}
          - name: Reloading PM2 process
            uses: appleboy/ssh-action@master
            with:
