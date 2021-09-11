@@ -1,6 +1,10 @@
-name: Continuous integration
+name: Deploy
 
-on: [pull_request]
+on:
+   push:
+      branches:
+         - master
+   pull_request:
 
 jobs:
    prettier:
@@ -83,3 +87,39 @@ jobs:
               wait-on: 'http://localhost:3000'
               wait-on-timeout: 120
               command: yarn tests:e2e:ci
+
+   production:
+      name: Production
+      runs-on: ubuntu-latest
+      needs: [unit_tests, integration_tests]
+      if: github.ref == 'refs/heads/master'
+      steps:
+         - uses: actions/checkout@v2
+         - uses: actions/setup-node@v2
+           with:
+              node-version: '14'
+              cache: yarn
+         - run: yarn install
+         - run: npx prisma generate
+         - run: yarn build
+         - name: Pulling changes & migrating database
+           uses: appleboy/ssh-action@master
+           with:
+              host: ${{ secrets.HOST }}
+              username: ${{ secrets.USERNAME }}
+              key: ${{ secrets.SSHKEY }}
+              port: ${{ secrets.PORT }}
+              script: cd ~/taktix && /root/.nvm/versions/node/v15.12.0/bin/npx prisma migrate deploy
+         - uses: shimataro/ssh-key-action@v2
+           with:
+              key: ${{ secrets.SSHKEY }}
+              known_hosts: 'taktix-ci-cd'
+         - run: rsync -avz .next/. ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/root/taktix/
+         - name: Reloading PM2 process
+           uses: appleboy/ssh-action@master
+           with:
+              host: ${{ secrets.HOST }}
+              username: ${{ secrets.USERNAME }}
+              key: ${{ secrets.SSHKEY }}
+              port: ${{ secrets.PORT }}
+              script: /usr/local/bin/pm2 reload "Taktix"
