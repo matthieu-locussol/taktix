@@ -29,7 +29,7 @@ jobs:
    #             node-version: '14'
    #             cache: yarn
    #        - run: yarn install
-   #        - run: npx prisma generate
+   #        - run: yarn prisma generate
    #        - run: yarn check:typescript
 
    #  eslint:
@@ -74,7 +74,7 @@ jobs:
    #              --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
    #     steps:
    #        - uses: actions/checkout@v2
-   #        - run: npx prisma migrate deploy
+   #        - run: yarn prisma migrate deploy
    #          env:
    #             DATABASE_URL: '${{secrets.DATABASE_URL}}'
    #        - uses: cypress-io/github-action@v2
@@ -100,7 +100,7 @@ jobs:
               node-version: '14'
               cache: yarn
          - run: yarn install
-         - run: npx prisma generate
+         - run: yarn prisma generate
          - run: yarn build
          - name: Pulling changes & migrating database
            uses: appleboy/ssh-action@master
@@ -109,7 +109,7 @@ jobs:
               username: ${{ secrets.USERNAME }}
               key: ${{ secrets.SSHKEY }}
               port: ${{ secrets.PORT }}
-              script: cd ~/taktix && /root/.nvm/versions/node/v15.12.0/bin/npx prisma migrate deploy
+              script: cd ~/taktix && /root/.yarn/bin/yarn prisma migrate deploy
          - uses: shimataro/ssh-key-action@v2
            with:
               key: ${{ secrets.SSH_PRIVATE_KEY }}
