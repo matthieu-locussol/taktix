@@ -9,5 +9,14 @@ module.exports = {
             NODE_ENV: 'production',
          },
       },
+      {
+         name: 'Taktix Staging',
+         script: 'yarn',
+         args: 'start -p 3100',
+         interpreter: '/bin/bash',
+         env_production: {
+            NODE_ENV: 'production',
+         },
+      },
    ],
 };
