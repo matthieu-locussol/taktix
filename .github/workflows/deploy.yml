@@ -112,10 +112,8 @@ jobs:
               script: cd ~/taktix && /root/.yarn/bin/yarn prisma migrate deploy
          - uses: shimataro/ssh-key-action@v2
            with:
-              key: ${{ secrets.SSH_PRIVATE_KEY }}
+              key: ${{ secrets.SSHKEY }}
               known_hosts: 'taktix-ci-cd'
-         - run: ls -al .
-         - run: ls -al ..
          - run: rsync -avz .next/. ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/root/taktix/
          - name: Reloading PM2 process
            uses: appleboy/ssh-action@master
